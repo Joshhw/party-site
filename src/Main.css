@@ -1,0 +1,51 @@
+
+/* a dot in front signifies a class, which can be used multiple times through
+ * the site. 
+*/
+.Main {
+    text-align: left;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+header {
+    background-color: #FFF; 
+}
+
+.imageClass {
+    width: 100%;
+    height: auto;
+}
+
+.Menu {
+    background-color: #B6C3D2; 
+    height: 39px;
+    width: 100%;
+}
+ul.nav-menu-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;    
+}
+
+li.nav {
+    float: left;
+}
+
+a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 10px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: rgb(5, 138, 27);
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+
+  }
+  
