@@ -4,6 +4,7 @@ import headerImage from './banner.jpg';
 import './Main.css';
 
 
+
 class Menu extends Component {
     render() {
         return (
@@ -33,11 +34,58 @@ class Header extends Component {
 }
 
 class Home extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            Name: '',
+            Email: '',
+            Attending: ''
+        };
+    
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+      }
+      handleChange(event) {
+        const target = event.target;
+        const value = target.value;
+        const name = target.name;
+        console.log("name:" + name);
+        console.log("value:" + value);
+
+    
+        this.setState({
+            [name]: value
+        });
+      }
+    
+      handleSubmit(event) {
+        alert('A name was submitted: ' + this.state.name);
+        event.preventDefault();
+      }
+    
+    
+
     render() {
         return (
             <div>
-                {/* <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdXp6DWNnStsPA-mO4IV0TI3EWpxras7J3d9U_qEd2nMW_7Eg/viewform?embedded=true" width="760" height="500" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe> */}
-            <text>testing one two</text>
+                <h1>Family Gathering Party</h1>
+                <h2>We will be having a party, please fill out the form below to tell us if 
+                    You'll be attending 
+                </h2>
+                <form onSubmit="">
+                    <label for="name">Name: </label>
+                    <input type="text" id="name" name="Name" value={this.state.Name} onChange={this.handleChange}/>
+                    <br/>
+                    <label for="email">Email: </label>
+                    <input type="email" id="email" name="Email" value={this.state.Email} onChange={this.handleChange} />
+                    <br/>
+                    <text>Will you be attending? </text>
+                    <label for="Yes">Yes: </label>
+                    <input type="radio" name="Attending" id="Yes" value="Yes" onChange={this.handleChange} checked={this.state.Attending === "Yes"} />
+                    <label for="No">No: </label>
+                    <input type="radio" name="Attending" id="No" value="No" onChange={this.handleChange} checked={this.state.Attending === "No"} />                        
+                    <input type="submit" value="Submit" />
+                </form>
             </div>
         );
     }
@@ -54,10 +102,12 @@ class Location extends Component {
 class Content extends Component {
     render() {
         return (
+            <div className="Content">
                 <Switch>
                     <Route exact path='/' component={Home}/>
                     <Route exact path='/location' component={Location}/>
                 </Switch>
+            </div>
         
 
         );
