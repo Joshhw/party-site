@@ -64,6 +64,7 @@ class Home extends Component {
       }
     
       handleSubmit(event) {
+        event.preventDefault();
         const data = new FormData(event.target);
         console.log("testing");
         console.log(data);
@@ -72,7 +73,6 @@ class Home extends Component {
           dataType: "json",
           body: data
         });
-        event.preventDefault();
       }
     
     
@@ -84,7 +84,7 @@ class Home extends Component {
                 <h2>We will be having a party, please fill out the form below to tell us if 
                     You'll be attending 
                 </h2>
-                <form onSubmit={this.onSubmit}>
+                <form onSubmit={this.handleSubmit}>
                     <label htmlFor="name">Name: </label>
                     <input type="text" id="name" name="Name" value={this.state.Name} onChange={this.handleChange}/>
                     <br/>
