@@ -39,7 +39,12 @@ class Home extends Component {
         this.state = {
             Name: '',
             Email: '',
-            Attending: ''
+            Attending: '',
+            Food: '',
+            Beer: false,
+            Wine: false,
+            Selzter: false,
+            Soda: false
         };
     
         this.handleChange = this.handleChange.bind(this);
@@ -47,7 +52,7 @@ class Home extends Component {
       }
       handleChange(event) {
         const target = event.target;
-        const value = target.value;
+        const value = target.type === 'checkbox' ? target.checked : target.value;
         const name = target.name;
         console.log("name:" + name);
         console.log("value:" + value);
@@ -59,7 +64,14 @@ class Home extends Component {
       }
     
       handleSubmit(event) {
-        alert('A name was submitted: ' + this.state.name);
+        const data = new FormData(event.target);
+        console.log("testing");
+        console.log(data);
+        fetch('https://script.google.com/macros/s/AKfycbwhiT80X_X1WtxbywuRhLWA_wEmdeRwz7relpq6VcxxlXoBgKE/exec', {
+          method: "GET",
+          dataType: "json",
+          body: data
+        });
         event.preventDefault();
       }
     
@@ -72,19 +84,41 @@ class Home extends Component {
                 <h2>We will be having a party, please fill out the form below to tell us if 
                     You'll be attending 
                 </h2>
-                <form onSubmit="">
-                    <label for="name">Name: </label>
+                <form onSubmit={this.onSubmit}>
+                    <label htmlFor="name">Name: </label>
                     <input type="text" id="name" name="Name" value={this.state.Name} onChange={this.handleChange}/>
                     <br/>
-                    <label for="email">Email: </label>
+                    <label htmlFor="email">Email: </label>
                     <input type="email" id="email" name="Email" value={this.state.Email} onChange={this.handleChange} />
                     <br/>
-                    <text>Will you be attending? </text>
-                    <label for="Yes">Yes: </label>
+                    Will you be attending?
+                    <br/>
+                    <label htmlFor="Yes">Yes: </label>
                     <input type="radio" name="Attending" id="Yes" value="Yes" onChange={this.handleChange} checked={this.state.Attending === "Yes"} />
-                    <label for="No">No: </label>
+                    <label htmlFor="No">No: </label>
                     <input type="radio" name="Attending" id="No" value="No" onChange={this.handleChange} checked={this.state.Attending === "No"} />                        
+                    <br/>
+                    Vegetarian or meat?<br/>
+                    <label htmlFor="Veg">Vegetarian: </label>
+                    <input type="radio" name="Food" id="Veg" value="Veg" onChange={this.handleChange} checked={this.state.Food === "Veg"} />                        
+                    <label htmlFor="Meat">Meat: </label>
+                    <input type="radio" name="Food" id="Meat" value="Meat" onChange={this.handleChange} checked={this.state.Food === "Meat"} />                        
+                    <br/>
+                    What will you be drinking?<br/>
+                    <label htmlFor="Beer">Beer </label>
+                    <input type="checkbox" name="Beer" id="Beer" onChange={this.handleChange} checked={this.state.Beer === true} />
+                    <br/>                    
+                    <label htmlFor="Wine">Wine </label>
+                    <input type="checkbox" name="Wine" id="Wine" onChange={this.handleChange} checked={this.state.Wine === true} />
+                    <br/>                    
+                    <label htmlFor="Selzter">Selzter </label>
+                    <input type="checkbox" name="Selzter" id="Selzter" onChange={this.handleChange} checked={this.state.Selzter === true} />
+                    <br/>                    
+                    <label htmlFor="Soda">Soda </label>
+                    <input type="checkbox" name="Soda" id="Soda" onChange={this.handleChange} checked={this.state.Soda === true} />
+                    <br/>                    
                     <input type="submit" value="Submit" />
+                    {/* <button>Submit</button> */}
                 </form>
             </div>
         );

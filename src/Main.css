@@ -44,10 +44,13 @@ li a:hover {
     background-color:#411F31;
 }
 
-.Content {
-    margin-top: 30px;
+body  {
+    margin: 0;
     padding: 0;
-    height: 500px;
+}
 
-  }
+.Content {
+    margin-top: 20px;
+    height: 500px;
+}
   
