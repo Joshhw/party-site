@@ -2,37 +2,42 @@
 /* a dot in front signifies a class, which can be used multiple times through
  * the site. 
 */
+
+/* font family and alignment */
+
 .Main {
     text-align: left;
     font-family: Helvetica, Arial, sans-serif;
 }
 
-header {
-    background-color: #FFF; 
+/* just in case images don't work */
+header, .Menu {
+    background-color: #B6C3D2; 
 }
 
+/* header image */
 .imageClass {
     width: 100%;
     height: auto;
     display: block;
 }
 
+/* Navigation CSS */
+
 .Menu {
-    background-color: #B6C3D2; 
     height: 39px;
     width: 100%;
 }
-ul.nav-menu-list {
+
+nav ul, nav li {
     list-style-type: none;
     margin: 0;
     padding: 0;    
-}
-
-li.nav {
     float: left;
-}
 
-li a {
+    
+}
+nav li a {
     display: block;
     color: white;
     text-align: center;
@@ -41,17 +46,26 @@ li a {
 }
 
 li a:hover {
-    background-color:#411F31;
+    background-color:rgb(124, 158, 197);
 }
+
+/* Not really sure what the point of this is anymore */
 
 body  {
     margin: 0;
     padding: 0;
 }
 
+/* I wanted a default sizing for the content displayed to align the menu */
 .Content {
     margin-top: 20px;
-    height: 500px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    min-height: 500px;
+}
+
+h3 {
+    margin: 0;
 }
 
 /* form elements */
@@ -65,7 +79,12 @@ button, input[type=text], input[type=email], select, textarea, fieldset {
     box-sizing: border-box;
     border-radius: 4px;
 
-  }
+}
+
+input[type=text], input[type=email] {
+    width: 13em;
+}
+
 
   input[type=text], input[type=email], input[type=checkbox], input[type=radio] {
       margin-left: 5px;
@@ -95,12 +114,11 @@ button {
 }
 
 button:hover {
-    background-color: chartreuse;
+    background-color: rgb(124, 158, 197);
 
 }
   
-
-  form {
+form {
     /* Just to center the form on the page */
     margin: 0 auto;
     width: 400px;
@@ -120,7 +138,7 @@ button:hover {
   label {
     /* To make sure that all labels have the same size and are properly aligned */
     display: inline-block;
-    width:70px;
+    width:90px;
     text-align: right;
   }
 
