@@ -32,6 +32,21 @@ class Header extends Component {
     }
 }
 
+class TravelContribution extends Component {
+    constructor(props) {
+        super(props);
+    };
+
+        render () {
+            return (
+                <div>
+                    <label htmlFor="amount">{this.props.labelText}</label>
+                    <input type="text" id="amount" name="Amount" value={this.props.test} onChange={this.props.change} />
+                </div>
+            )
+        }
+}
+
 class SubmissionForm extends Component {
     constructor(props) {
         super(props);
@@ -44,7 +59,8 @@ class SubmissionForm extends Component {
             Wine: false,
             Selzter: false,
             Soda: false,
-            travelPool: ''
+            travelPool: 'neither',
+            Other: ''
         };
     
         this.handleChange = this.handleChange.bind(this);
@@ -89,16 +105,23 @@ class SubmissionForm extends Component {
         });
       }
       render () {
+        //   const travelPool = this.state.travelPool;
+        //   var travelElement = null;
+        //   if (travelPool !== '' && travelPool === "contribute") {
+        //       travelElement = <TravelContribution labelText="How much? " test={this.state.amount} change={this.handleChange} />
+        //   } else if (travelPool !== '' && travelPool === 'needsHelp') {
+        //     travelElement = <TravelContribution labelText="How much? " test={this.state.amount} change={this.handleChange} />           
+        //   }
+
           return (
             <form onSubmit={this.handleSubmit}>
             <div>
                 <label htmlFor="name">Name:</label>
                 <input type="text" id="name" name="Name" required pattern="[A-Za-z ]+" value={this.state.Name} onChange={this.handleChange}/>
             </div>
-            {this.state.plusOne && <input type="checkbox" id="plusOne" name="plusOne"/>}
             <div>
                 <label htmlFor="email">Email:</label>
-                <input type="email" id="email" name="Email" required pattern="[a-zA-Z0-9]+@[a-zA-Z0-9]+.[a-zA-Z]+" value={this.state.Email} onChange={this.handleChange} />
+                <input type="email" id="email" name="Email" required pattern="[a-zA-Z0-9.+]+@[a-zA-Z0-9]+.[a-zA-Z]+" value={this.state.Email} onChange={this.handleChange} />
             </div>
             <div>
                 <fieldset>
@@ -111,11 +134,17 @@ class SubmissionForm extends Component {
             </div>
             <div>
                 <fieldset>
-                    <legend>Vegetarian or meat?</legend>
+                    <legend>Vegetarian, Vegan, or Meat?</legend>
                     <label htmlFor="Veg">Vegetarian:</label>
                     <input type="radio" name="Food" id="Veg" value="Veg" onChange={this.handleChange} checked={this.state.Food === "Veg"} />                        
+                    <label htmlFor="Vegan">Vegan:</label>
+                    <input type="radio" name="Food" id="Vegan" value="Vegan" onChange={this.handleChange} checked={this.state.Food === "Meat"} />                        
                     <label htmlFor="Meat">Meat:</label>
                     <input type="radio" name="Food" id="Meat" value="Meat" onChange={this.handleChange} checked={this.state.Food === "Meat"} />                        
+                    <div>
+                <label htmlFor="other">other food considerations?</label>
+                <input type="text" name="Other" id="other" value={this.state.Other} onChange={this.handleChange} />
+            </div>
                 </fieldset>
             </div>
             <div>
@@ -136,8 +165,10 @@ class SubmissionForm extends Component {
                     <legend>Travel pool</legend>
                 <label htmlFor="contribute">I can help</label>
                 <input type="radio" name="travelPool" id="contribute" value="contribute" onChange={this.handleChange} checked={this.state.travelPool === "contribute"} />
-                <label htmlFor="needsHelp">I need help</label>
+                <label htmlFor="needsHelp">I could use help</label>
                 <input type="radio" name="travelPool" id="needsHelp" value="needsHelp" onChange={this.handleChange} checked={this.state.travelPool === "needsHelp"} /> 
+                <label htmlFor="neither">Neither</label>
+                <input type="radio" name="travelPool" id="neither" value="neither" onChange={this.handleChange} checked={this.state.travelPool === "neither"} />
                 </fieldset>
             </div>
             <div className="button">
@@ -157,27 +188,27 @@ class Home extends Component {
     render() {
         return (
             <div>
-                <h1>We're having a party!</h1>
+                <h1>We're having a party to celebrate our marriage!</h1>
                 <h3>When: Saturday, June 16th, 2018</h3>
                 <h3>Time: 4pm to 9:30pm</h3>
                 <h3>Where: Newton Community Farm, 303 Nahanton Street, Newton, MA 02459</h3>
                 <p> 
-                    So you've probably been wondering when this event would occur and we've finally
-                    gotten all the details together for you. This is an event to bring family and friends
-                    together under the same roof and celebrate our lives. We appreciate all that you've 
-                    brought to ours over the years and thought everyone should meet, and now seems like
-                    as good a time as ever. 
+                    This is an event to bring family and friends
+                    together under the same roof to celebrate. We appreciate all that you've 
+                    brought to our lives over the years. Below is a form to let us know if you're coming or not.
                 </p>
                 <p>
-                    Below is a form to let us know if you're coming or not.
-                We wanted to host this event for a simple reason: bring together people we love most. 
                 We know from our own lives that traveling can be a big financial burden — 
                 but we want to find a way to remove that barrier for everyone we invited through a travel pool. 
-                Please consider <a href="https://paypal.me/pools/c/82cskaxLW6">contributing a gift</a> to help others travel, or reach out if financial assistance 
-                would mean the difference for you attending. Any money that isn’t used from the pool will be 
-                donated to The Haley House. Thank for you helping to make this party everything we ever dreamed of. 
+                Please let us know below if financial assistance would mean the difference for you attending.
+                We will follow-up after we get an estimate of need.
+                </p>
+                <p>
+                Thank for you helping to make this party everything we ever dreamed of!
+                </p> 
+                <p>
                 If you submit the form below and a pop up doesn't appear, please try again, or shut off your ad-blocker plugins. 
-                Those can cause issues with the form submission. If it still doesn't work then email <a href="mailto:joshdecosta@gmail.com">Josh</a> and 
+                (Those can cause issues with the form submission.) If it still doesn't work then email <a href="mailto:joshdecosta@gmail.com">Josh</a> and 
                 he can sort it out.
                 </p>
                 <SubmissionForm/>

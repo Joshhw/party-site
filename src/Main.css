@@ -58,9 +58,7 @@ body  {
 
 /* I wanted a default sizing for the content displayed to align the menu */
 .Content {
-    margin-top: 20px;
-    margin-bottom: 10px;
-    margin-left: 10px;
+    margin: 20px;
     min-height: 500px;
 }
 
@@ -138,7 +136,7 @@ form {
   label {
     /* To make sure that all labels have the same size and are properly aligned */
     display: inline-block;
-    width:90px;
+    width:120px;
     text-align: right;
   }
 
