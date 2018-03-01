@@ -35,13 +35,18 @@ class Header extends Component {
 class TravelContribution extends Component {
     constructor(props) {
         super(props);
+        this.handleChange = this.handleChange.bind(this);
     };
+
+    handleChange(e) {
+        this.props.change(e);
+    }
 
         render () {
             return (
                 <div>
                     <label htmlFor="amount">{this.props.labelText}</label>
-                    <input type="text" id="amount" name="Amount" value={this.props.test} onChange={this.props.change} />
+                    <input type="text" id="amount" name="Amount" value={this.props.test} onChange={this.handleChange} />
                 </div>
             )
         }
@@ -60,6 +65,7 @@ class SubmissionForm extends Component {
             Selzter: false,
             Soda: false,
             travelPool: 'neither',
+            Amount: '0',
             Other: ''
         };
     
@@ -105,13 +111,13 @@ class SubmissionForm extends Component {
         });
       }
       render () {
-        //   const travelPool = this.state.travelPool;
-        //   var travelElement = null;
-        //   if (travelPool !== '' && travelPool === "contribute") {
-        //       travelElement = <TravelContribution labelText="How much? " test={this.state.amount} change={this.handleChange} />
-        //   } else if (travelPool !== '' && travelPool === 'needsHelp') {
-        //     travelElement = <TravelContribution labelText="How much? " test={this.state.amount} change={this.handleChange} />           
-        //   }
+          const travelPool = this.state.travelPool;
+          var travelElement = null;
+          if (travelPool === "contribute") {
+              travelElement = <TravelContribution labelText="How much?" test={this.state.amount} change={this.handleChange} />
+          } else if (travelPool === 'needsHelp') {
+            travelElement = <TravelContribution labelText="How much?" test={this.state.amount} change={this.handleChange} />           
+          }
 
           return (
             <form onSubmit={this.handleSubmit}>
@@ -142,9 +148,9 @@ class SubmissionForm extends Component {
                     <label htmlFor="Meat">Meat:</label>
                     <input type="radio" name="Food" id="Meat" value="Meat" onChange={this.handleChange} checked={this.state.Food === "Meat"} />                        
                     <div>
-                <label htmlFor="other">other food considerations?</label>
-                <input type="text" name="Other" id="other" value={this.state.Other} onChange={this.handleChange} />
-            </div>
+                        <label htmlFor="other">other food considerations?</label>
+                        <input type="text" name="Other" id="other" value={this.state.Other} onChange={this.handleChange} />
+                    </div>
                 </fieldset>
             </div>
             <div>
@@ -169,6 +175,9 @@ class SubmissionForm extends Component {
                 <input type="radio" name="travelPool" id="needsHelp" value="needsHelp" onChange={this.handleChange} checked={this.state.travelPool === "needsHelp"} /> 
                 <label htmlFor="neither">Neither</label>
                 <input type="radio" name="travelPool" id="neither" value="neither" onChange={this.handleChange} checked={this.state.travelPool === "neither"} />
+                <div>
+                {travelElement}
+                </div>
                 </fieldset>
             </div>
             <div className="button">
