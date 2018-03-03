@@ -10,8 +10,8 @@ class Menu extends Component {
             <div className="Menu">
                 <nav>
                     <ul>
-                        <li><Link to='/'>About</Link></li>
-                        <li><Link to='/location'>Directions</Link></li>
+                        <li><Link to='/'>Home</Link></li>
+                        {/* <li><Link to='/location'>Directions</Link></li> */}
                     </ul>
                 </nav>
             </div>
@@ -62,7 +62,7 @@ class SubmissionForm extends Component {
             Food: '',
             Beer: false,
             Wine: false,
-            Selzter: false,
+            Seltzer: false,
             Soda: false,
             travelPool: 'neither',
             Amount: '0',
@@ -71,6 +71,23 @@ class SubmissionForm extends Component {
     
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.resetForm = this.resetForm.bind(this);
+      }
+
+      resetForm() {
+          this.setState({
+            Name: '',
+            Email: '',
+            Attending: '',
+            Food: '',
+            Beer: false,
+            Wine: false,
+            Seltzer: false,
+            Soda: false,
+            travelPool: 'neither',
+            Amount: '0',
+            Other: ''              
+          })
       }
       handleChange(event) {
         const target = event.target;
@@ -106,6 +123,7 @@ class SubmissionForm extends Component {
                 throw Error(res.statusText);
             } else if (res.ok) {
                 alert("thanks for responding! your form submission was successful");
+                this.resetForm();
             }
             console.log(res.data);
         });
@@ -140,35 +158,35 @@ class SubmissionForm extends Component {
             </div>
             <div>
                 <fieldset>
-                    <legend>Vegetarian, Vegan, or Meat?</legend>
+                    <legend>Dinner choice</legend>
                     <label htmlFor="Veg">Vegetarian:</label>
                     <input type="radio" name="Food" id="Veg" value="Veg" onChange={this.handleChange} checked={this.state.Food === "Veg"} />                        
                     <label htmlFor="Vegan">Vegan:</label>
-                    <input type="radio" name="Food" id="Vegan" value="Vegan" onChange={this.handleChange} checked={this.state.Food === "Meat"} />                        
+                    <input type="radio" name="Food" id="Vegan" value="Vegan" onChange={this.handleChange} checked={this.state.Food === "Vegan"} />                        
                     <label htmlFor="Meat">Meat:</label>
                     <input type="radio" name="Food" id="Meat" value="Meat" onChange={this.handleChange} checked={this.state.Food === "Meat"} />                        
                     <div>
-                        <label htmlFor="other">other food considerations?</label>
+                        <label htmlFor="other">Food allergies?</label>
                         <input type="text" name="Other" id="other" value={this.state.Other} onChange={this.handleChange} />
                     </div>
                 </fieldset>
             </div>
             <div>
                 <fieldset>
-                    <legend>What will you be drinking?</legend>
+                    <legend>Drink selection(s)</legend>
                     <label htmlFor="Beer">Beer</label>
                     <input type="checkbox" name="Beer" id="Beer" onChange={this.handleChange} checked={this.state.Beer === true} />
                     <label htmlFor="Wine">Wine</label>
                     <input type="checkbox" name="Wine" id="Wine" onChange={this.handleChange} checked={this.state.Wine === true} />
-                    <label htmlFor="Selzter">Selzter</label>
-                    <input type="checkbox" name="Selzter" id="Selzter" onChange={this.handleChange} checked={this.state.Selzter === true} />
+                    <label htmlFor="Seltzer">Seltzer</label>
+                    <input type="checkbox" name="Seltzer" id="Seltzer" onChange={this.handleChange} checked={this.state.Seltzer === true} />
                     <label htmlFor="Soda">Soda</label>
                     <input type="checkbox" name="Soda" id="Soda" onChange={this.handleChange} checked={this.state.Soda === true} />
                 </fieldset>                                                
             </div>
             <div>
                 <fieldset>
-                    <legend>Travel pool</legend>
+                    <legend>Travel fund</legend>
                 <label htmlFor="contribute">I can help</label>
                 <input type="radio" name="travelPool" id="contribute" value="contribute" onChange={this.handleChange} checked={this.state.travelPool === "contribute"} />
                 <label htmlFor="needsHelp">I could use help</label>
@@ -199,28 +217,32 @@ class Home extends Component {
             <div>
                 <h1>We're having a party to celebrate our marriage!</h1>
                 <h3>When: Saturday, June 16th, 2018</h3>
-                <h3>Time: 4pm to 9:30pm</h3>
+                <h3>Time: 4:30pm to 9:30pm</h3>
                 <h3>Where: Newton Community Farm, 303 Nahanton Street, Newton, MA 02459</h3>
                 <p> 
-                    This is an event to bring family and friends
-                    together under the same roof to celebrate. We appreciate all that you've 
-                    brought to our lives over the years. Below is a form to let us know if you're coming or not.
+                    As you know, we recently got married! And as we hope you know, we're so thankful for all that you
+                     -- our friends and family -- have brought to our lives over the years.
+                     So, we're bringing you all together under one roof to celebrate! 
+
                 </p>
                 <p>
-                We know from our own lives that traveling can be a big financial burden — 
-                but we want to find a way to remove that barrier for everyone we invited through a travel pool. 
-                Please let us know below if financial assistance would mean the difference for you attending.
-                We will follow-up after we get an estimate of need.
+                    <b>Travel fund (optional):</b> We know that traveling can be a big financial burden — but we want to try 
+                    our best to bring our community together for this event. Please let us know
+                     if extra cash would make it possible for you to attend, or if you are able to help someone else make it. 
+                     Either way, we'll reach out once we have a 
+                     better estimate of how much is needed and how much we can help.
+
                 </p>
                 <p>
-                Thank for you helping to make this party everything we ever dreamed of!
+                Thank you for helping to make this party everything we ever dreamed of!
                 </p> 
-                <p>
-                If you submit the form below and a pop up doesn't appear, please try again, or shut off your ad-blocker plugins. 
-                (Those can cause issues with the form submission.) If it still doesn't work then email <a href="mailto:joshdecosta@gmail.com">Josh</a> and 
-                he can sort it out.
-                </p>
                 <SubmissionForm/>
+                <p>
+                    A pop up should appear when you submit the form. If it doesn't, 
+                    please shut off your ad-blocker if you have one, and try again. 
+                    If it still doesn't work, email <a href="mailto:joshdecosta@gmail.com">Josh</a> and 
+                    he will help you.
+                </p>
             </div>
         );
     }
