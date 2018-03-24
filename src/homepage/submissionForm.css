@@ -1,0 +1,77 @@
+/* form elements */
+
+button, input[type=text], input[type=email], select, textarea, fieldset {
+    font-family : inherit;
+    font-size   : 100%;
+    -webkit-appearance: none;
+    -webkit-box-sizing: border-box; /* For legacy WebKit based browsers */
+    -moz-box-sizing: border-box; /* For legacy (Firefox <29) Gecko based browsers */
+    box-sizing: border-box;
+    border-radius: 4px;
+
+}
+
+input[type=text], input[type=email] {
+    width: 13em;
+}
+
+
+input[type=text], input[type=email], input[type=checkbox], input[type=radio] {
+    margin-left: 5px;
+}
+
+input:focus, input:valid {
+/* To give a little highlight on active elements */
+border-color: #B6C3D2;
+}
+
+input:invalid {
+border: 2px solid red;
+}
+
+input:focus:invalid {
+outline: none;
+}
+
+button {
+    /* To position the buttons to the same position of the text fields */
+    float   : right;
+    padding : 10px;
+    background-color: #B6C3D2;
+    color: #FFF;
+    border-radius: 4px;
+
+}
+
+button:hover {
+    background-color: rgb(124, 158, 197);
+
+}
+  
+form {
+    /* Just to center the form on the page */
+    margin: 0 auto;
+    width: 400px;
+    /* To see the outline of the form */
+    padding: 1em;
+    border: 1px solid #CCC;
+    border-radius: 4px;
+    overflow: auto;
+  }
+
+  /* make all divs within a form have a top margin of 1em, meaning 16px (default font size) */
+  form div + div {
+    margin-top: 1em;
+  }
+  
+  
+  label {
+    /* To make sure that all labels have the same size and are properly aligned */
+    display: inline-block;
+    width:120px;
+    text-align: right;
+  }
+
+
+
+  

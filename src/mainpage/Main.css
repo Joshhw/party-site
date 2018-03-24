@@ -1,0 +1,65 @@
+
+/* a dot in front signifies a class, which can be used multiple times through
+ * the site. 
+*/
+
+/* font family and alignment */
+
+header + div {
+    margin: 20px;
+    min-height: 500px;
+}
+
+/* just in case images don't work */
+header, .Menu {
+    background-color: #B6C3D2; 
+}
+
+/* header image */
+.imageClass {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Navigation CSS */
+
+.Menu {
+    height: 39px;
+    width: 100%;
+}
+
+nav ul, nav li {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;    
+    float: left;
+
+    
+}
+nav li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 10px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color:rgb(124, 158, 197);
+}
+
+/* Not really sure what the point of this is anymore */
+
+body  {
+    text-align: left;
+    font-family: Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+
+}
+
+h3 {
+    margin: 0;
+}
+
