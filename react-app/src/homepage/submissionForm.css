@@ -33,9 +33,9 @@ input:focus:invalid {
 outline: none;
 }
 
-button {
+div > button {
     /* To position the buttons to the same position of the text fields */
-    float   : right;
+    margin-left: 325px;
     padding : 10px;
     background-color: #B6C3D2;
     color: #FFF;

@@ -3,6 +3,7 @@ import { Link, Switch, Route } from 'react-router-dom';
 import headerImage from './banner.jpg';
 import './Main.css';
 import Home from '../homepage/home.js';
+import Faq from '../Faq/Faq.js';
 
 class Menu extends Component {
     render() {
@@ -11,6 +12,8 @@ class Menu extends Component {
                 <nav>
                     <ul>
                         <li><Link to='/'>Home</Link></li>
+                        <li><Link to='/faq'>FAQ</Link></li>
+                        
                     </ul>
                 </nav>
             </div>
@@ -38,6 +41,7 @@ class Main extends Component {
                 <Header />
                 <Switch>
                     <Route exact path='/' component={Home}/>
+                    <Route exact path='/faq' component={Faq}/>
                 </Switch>
             </div>
         );
