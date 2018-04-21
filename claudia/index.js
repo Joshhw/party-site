@@ -31,7 +31,8 @@ api.post('/questions', function (request) { // SAVE your icecream
     TableName: 'questions',  
     Item: {
         questionId: request.body.questionId,
-        question: request.body.question // your icecream name
+        question: request.body.question,
+        answer: "Coming soon" // your icecream name
     } 
   }
   return dynamoDb.put(params).promise(); // returns dynamo result 
@@ -39,7 +40,7 @@ api.post('/questions', function (request) { // SAVE your icecream
 
 api.get('/questions', function (request) { // GET all users
   return dynamoDb.scan({ TableName: 'questions' }).promise()
-      .then(response => response.Items)
+      .then(response => response)
 });
 
 api.get('/id', function (request) { // GET new id
