@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import SubmitQuestion from './submitQuestion.js';
+import './Faq.css';
 
 class Faq extends Component {
 
@@ -36,7 +37,7 @@ class Faq extends Component {
                 {this.state.questions.map(question =>
                 <div key={question.questionId}>
                 <h3>{question.question}</h3>
-                <p><i>{question.answer}</i></p>
+                <p className="Answer"><i>{question.answer}</i></p>
                 <hr/>
                 </div>)}
                 {this.state.questions.length ? 
