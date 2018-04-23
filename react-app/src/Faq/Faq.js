@@ -1,13 +1,21 @@
 import React, { Component } from 'react';
+import SubmitQuestion from './submitQuestion.js';
 
 class Faq extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            questions: []
+            questions: [],
+            toggleForm: false
         };
         // this.loadQuestions = this.loadQuestions.bind(this);
+        this.showForm = this.showForm.bind(this);
+    }
+    showForm() {
+        this.setState(prevState => ({
+            toggleForm : !prevState.toggleForm
+        }))
     }
     componentDidMount() {
         fetch("https://b8wl2b2tpa.execute-api.us-east-1.amazonaws.com/latest/questions", {
@@ -25,12 +33,15 @@ class Faq extends Component {
     render() {
         return (
             <div>
-                <h3>Questions and potentially answers</h3>
                 {this.state.questions.map(question =>
                 <div key={question.questionId}>
-                <p >Question: {question.question}</p>
-                <p>Answer: {question.answer}</p>
+                <h3>{question.question}</h3>
+                <p><i>{question.answer}</i></p>
+                <hr/>
                 </div>)}
+                {this.state.questions.length ? 
+                    <button className="question-link" onClick={this.showForm}>Submit a question</button> : null}
+                {this.state.toggleForm ? <SubmitQuestion/> : null}
             </div>
 
         );
