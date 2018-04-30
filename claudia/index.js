@@ -26,13 +26,13 @@ var generateId = (table) => {
     })
 }
 
-api.post('/questions', function (request) { // SAVE your icecream
+api.post('/questions', function (request) { // SAVE your question
   var params = {  
     TableName: 'questions',  
     Item: {
         questionId: request.body.questionId,
         question: request.body.question,
-        answer: "Coming soon" // your icecream name
+        answer: "Coming soon" 
     } 
   }
   return dynamoDb.put(params).promise(); // returns dynamo result 

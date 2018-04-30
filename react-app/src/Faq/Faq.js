@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import SubmitQuestion from './submitQuestion.js';
+import { CSSTransitionGroup } from 'react-transition-group';
 import './Faq.css';
 
 class Faq extends Component {
@@ -32,17 +33,28 @@ class Faq extends Component {
     }
 
     render() {
-        return (
-            <div>
-                {this.state.questions.map(question =>
-                <div key={question.questionId}>
+
+        const questions = this.state.questions.map(question =>
+            <div key={question.questionId}>
                 <h3>{question.question}</h3>
                 <p className="Answer"><i>{question.answer}</i></p>
                 <hr/>
-                </div>)}
+            </div>);
+
+
+        return (
+            <div>
+                {questions}
                 {this.state.questions.length ? 
                     <button className="question-link" onClick={this.showForm}>Submit a question</button> : null}
-                {this.state.toggleForm ? <SubmitQuestion/> : null}
+                {this.state.toggleForm ? 
+                    // <CSSTransitionGroup
+                    // transitionName="example"
+                    // transitionEnterTimeout={500}
+                    // transitionLeaveTimeout={300}> 
+                        <SubmitQuestion/>  :
+                    // </CSSTransitionGroup> : 
+                    null}
             </div>
 
         );
