@@ -4,10 +4,15 @@ import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import styled from 'styled-components';
+import Link from '@material-ui/core/Link';
 
 const ToolbarWrapper = styled.div`
   border-bottom: 1px solid black;
   flex-grow: 1;
+`;
+
+const StyledLink = styled(Link)`
+  font-weight: bold;
 `;
 
 const Header: React.FC = () => {
@@ -23,13 +28,25 @@ const Header: React.FC = () => {
               alignItems="center"
             >
               <Grid item lg>
-                Josh
+                <Typography>
+                  <StyledLink color="textPrimary" href="#">
+                    Josh
+                  </StyledLink>
+                </Typography>
               </Grid>
               <Grid item lg>
-                Jess
+                <Typography>
+                  <StyledLink color="textPrimary" href="#">
+                    Jess
+                  </StyledLink>
+                </Typography>
               </Grid>
               <Grid item lg>
-                Travels
+                <Typography>
+                  <StyledLink color="textPrimary" href="">
+                    Travel
+                  </StyledLink>
+                </Typography>
               </Grid>
             </Grid>
           </Toolbar>

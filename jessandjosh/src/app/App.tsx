@@ -1,16 +1,15 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Header from '../header/Header';
+import Footer from '../footer/Footer';
+import Body from '../body/Body';
 
 const App: React.FC = () => {
   return (
     <div className="App">
       <Header />
-      {/* <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" /> */}
-      <p>Coming Soon.</p>
-      {/* </header> */}
+      <Body />
+      <Footer />
     </div>
   );
 };
