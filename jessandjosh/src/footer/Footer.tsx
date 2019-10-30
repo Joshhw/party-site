@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Container } from '@material-ui/core';
+import Container from '@material-ui/core/Container';
+import Typography from '@material-ui/core/Typography';
 
 const FooterWrapper = styled.div`
   border-top: 1px solid black;
@@ -13,7 +14,9 @@ const Footer: React.FC = () => {
     <React.Fragment>
       <Container maxWidth="lg">
         <FooterWrapper>
-          This is where I tell you something irrelevant
+          <Typography variant="subtitle2" align="center">
+            This is where I tell you something irrelevant
+          </Typography>
         </FooterWrapper>
       </Container>
     </React.Fragment>
