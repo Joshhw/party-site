@@ -28,21 +28,21 @@ const Header: React.FC = () => {
               alignItems="center"
             >
               <Grid item lg>
-                <Typography>
+                <Typography variant="h6">
                   <StyledLink color="textPrimary" href="#">
                     Josh
                   </StyledLink>
                 </Typography>
               </Grid>
               <Grid item lg>
-                <Typography>
+                <Typography variant="h6">
                   <StyledLink color="textPrimary" href="#">
                     Jess
                   </StyledLink>
                 </Typography>
               </Grid>
               <Grid item lg>
-                <Typography>
+                <Typography variant="h6">
                   <StyledLink color="textPrimary" href="">
                     Travel
                   </StyledLink>
